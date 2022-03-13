@@ -1,0 +1,12 @@
+<div class="search-block">
+    <sng-search-field (submit)="onProcessSearchRequest($event)"></sng-search-field>
+</div>
+<div class="suggested-block">
+    <div class="title">Популярное</div>
+    <mat-list class="song-list">
+        <mat-list-item class="item" *ngFor="let song of popularSongs$ | async" matRipple (click)="null">
+            <span matLine class="song-name">{{ song.name }}</span>
+            <span matLine class="artist">{{ song.artist }}</span>
+        </mat-list-item>
+    </mat-list>
+</div>

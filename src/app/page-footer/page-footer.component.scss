@@ -1,0 +1,19 @@
+@import "@angular/material";
+
+$primary: get-color-from-palette($blue-palette, 700);
+
+:host {
+    height: 100px;
+    min-height: 100px;
+    width: 100%;
+    bottom: 0;
+    background-color: $primary;
+}
+
+.page-footer-content {
+    padding: 20px;
+
+    span {
+        color: #fff;
+    }
+}

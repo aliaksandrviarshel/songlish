@@ -1,0 +1,50 @@
+@mixin for-tablet {
+    @media (max-width: 960px) {
+        @content;
+    }
+}
+
+@mixin for-phone {
+    @media (max-width: 400px) {
+        @content;
+    }
+}
+
+@mixin custom-scroll {
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $on-primary;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: $on-primary;
+    }
+}
+
+@mixin size($size) {
+    width: $size;
+    height: $size;
+}
+
+@mixin icon-size($size) {
+    mat-icon {
+        font-size: $size;
+        width: $size;
+        height: $size;
+    }
+}
+
+@mixin bottom-shadow {
+    box-shadow: 0 1px 1px $light-gray;
+}
+
+@mixin top-shadow {
+    box-shadow: 1px 0 1px $light-gray;
+}
+
+@mixin even-shadow {
+    box-shadow: 0 0 1px $light-gray;
+}

@@ -1,0 +1,15 @@
+<span class="title">Уровень знания</span>
+<form class="form" [formGroup]="form">
+    <label class="container low">
+        <input type="radio" [value]="wordKnowledgeLevel.Low" formControlName="level">
+        <span class="checkmark"></span>
+    </label>
+    <label class="container medium">
+        <input type="radio" [value]="wordKnowledgeLevel.Medium" formControlName="level">
+        <span class="checkmark"></span>
+    </label>
+    <label class="container high">
+        <input type="radio" [value]="wordKnowledgeLevel.High" formControlName="level">
+        <span class="checkmark"></span>
+    </label>
+</form>

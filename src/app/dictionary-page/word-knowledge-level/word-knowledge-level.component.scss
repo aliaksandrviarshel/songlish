@@ -1,0 +1,21 @@
+@import "@angular/material";
+
+$yellow: get-color-from-palette($yellow-palette, 700);
+$green: get-color-from-palette($green-palette, 700);
+$red: get-color-from-palette($red-palette, 700);
+
+:host {
+    font-weight: bold;
+
+    .low {
+        color: $red;
+    }
+
+    .middle {
+        color: $yellow;
+    }
+
+    .high {
+        color: $green;
+    }
+}

@@ -1,0 +1,10 @@
+<swiper #swiper [navigation]="true" (activeIndexChange)="onSlideChange($event)">
+    <ng-template swiperSlide *ngFor="let word of words">
+        <div #card class="card front carousel-cell" [class.flipped]="cardIsFlipped" (click)="onCardFlip()">
+            <div class="card-content">
+                <div class="front">{{word.foreign}}</div>
+                <div class="back">{{word.translate}}</div>
+            </div>
+        </div>
+    </ng-template>
+</swiper>

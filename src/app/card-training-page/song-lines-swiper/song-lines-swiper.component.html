@@ -1,0 +1,8 @@
+<swiper #swiper [navigation]="true">
+    <ng-template swiperSlide *ngFor="let linesModel of linesModels">
+        <div class="song-name"> {{ linesModel?.performer }} - {{ linesModel?.songName }} </div>
+        <div class="song-lines">
+            <p *ngFor="let line of linesModel?.lines" class="line" [innerHtml]="line | highlight:word"></p>
+        </div>
+    </ng-template>
+</swiper>

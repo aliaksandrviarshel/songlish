@@ -1,0 +1,11 @@
+<ng-container *ngIf="model">
+    <div class="song-data">
+        <div class="name"> {{ model.name }} </div>
+        <div class="artist"> {{ model.artist }} </div>
+    </div>
+    <div class="all-words-count dot" matTooltip="Количество всех слов" matTooltipPosition="above">{{ model.wordsCount }}
+    </div>
+    <div class="unlearned-words-count dot" matTooltip="Количество невуюченных слов" matTooltipPosition="above">{{
+        model.unlearnedWordsCount }}
+    </div>
+</ng-container>

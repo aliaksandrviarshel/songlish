@@ -1,0 +1,10 @@
+<sng-table-base [items]="items" [filterValue]="filterValue" confirmDeleteMessage="Удалить песню?"
+                (delete)="onDelete($event)" (expand)="onGetDetails($event)">
+    <ng-template #tile let-model="model">
+        <sng-song-list-tile [model]="model"></sng-song-list-tile>
+    </ng-template>
+    <ng-template #expandedTile let-id="id">
+        <sng-song-expanded-tile [id]="id" [details]="details$ | async" (cancel)="onCancel()" (save)="onSave($event)">
+        </sng-song-expanded-tile>
+    </ng-template>
+</sng-table-base>

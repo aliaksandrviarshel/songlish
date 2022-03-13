@@ -1,0 +1,10 @@
+<ng-container *ngIf="model">
+    <div class="song-data">
+        <div class="name"> {{ model.foreign }} </div>
+    </div>
+    <div class="all-words-count dot" matTooltip="" matTooltipPosition="above">{{ model.level | wordLevel }}
+    </div>
+    <div class="unlearned-words-count" matTooltip="Количество невуюченных слов" matTooltipPosition="above">
+        <sng-word-knowledge-level [level]="model.knowledgeLevel"></sng-word-knowledge-level>
+    </div>
+</ng-container>

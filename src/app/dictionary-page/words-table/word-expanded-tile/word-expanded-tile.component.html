@@ -1,0 +1,23 @@
+<ng-container *ngIf="details; else loading">
+    <mat-form-field class="translates-form-field" appearance="none">
+        <mat-chip-list #translateList class="translates">
+            <mat-chip *ngFor="let translate of translates" [disableRipple]="true" [removable]="true"
+                      (removed)="onTranslateRemove(translate)">
+                {{ translate }}
+                <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip>
+            <input placeholder="+перевод" [matChipInputFor]="translateList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
+                   (matChipInputTokenEnd)="onTranslateAdd($event)">
+        </mat-chip-list>
+    </mat-form-field>
+    <div class="actions">
+        <button mat-stroked-button color="primary" [disabled]="!isDirty" (click)="onCancel()">Отмена</button>
+        <button mat-flat-button color="primary" [disabled]="!isDirty" (click)="onSave()">Сохранить</button>
+    </div>
+</ng-container>
+<ng-template #loading>
+    <mat-spinner class="progress-spinner" [diameter]="20"></mat-spinner>
+</ng-template>

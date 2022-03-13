@@ -1,0 +1,21 @@
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.song-name {
+    font-weight: bold;
+}
+
+.song-lines {
+    .line {
+        &::before {
+            content: "... ";
+        }
+
+        &::after {
+            content: " ...";
+        }
+    }
+}

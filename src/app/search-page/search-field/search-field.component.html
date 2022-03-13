@@ -1,0 +1,11 @@
+<mat-form-field appearance="outline" class="search-field" color="primary">
+    <input #input matInput placeholder="Введите название песни" spellcheck="false" [formControl]="myControl"
+           [matAutocomplete]="auto" matAutocompletePosition="below" (keyup.enter)="onSubmit(input.value)">
+    <mat-icon matSuffix>search</mat-icon>
+    <mat-autocomplete #auto="matAutocomplete" (optionActivated)="onOptionActivated($event)">
+        <!-- global styles -->
+        <mat-option *ngFor="let option of filteredOptions$ | async" [value]="option">
+            <span [innerHTML]="option | highlight:toHighlight"></span>
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

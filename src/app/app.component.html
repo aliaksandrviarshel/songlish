@@ -1,1 +1,49 @@
-Hi?
+<mat-sidenav-container>
+    <mat-sidenav-content class="page-shell-content">
+        <ng-container *ngIf="isHeaderDisplayed">
+            <mat-toolbar class="page-header">
+                <button mat-icon-button class="menu-button" (click)="navSidenav.toggle()" fxShow="true" fxHide.gt-sm>
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <a routerLink="/search" class="logo">Songlish</a>
+                <mat-nav-list fxShow="true" fxHide.lt-md class="navbar navbar-full-sized">
+                    <a class="navbar-item" href="#" routerLink="/search" routerLinkActive="active-route">Поиск</a>
+                    <a class="navbar-item" href="#" routerLink="/dictionary" routerLinkActive="active-route">Мой
+                        словарь</a>
+                    <a class="navbar-item" href="#" routerLink="/training-selection"
+                       routerLinkActive="active-route">Тренировки</a>
+                    <a class="navbar-item" href="#" routerLinkActive="active-route">Рейтинг</a>
+                </mat-nav-list>
+            </mat-toolbar>
+        </ng-container>
+
+        <div class="page-content">
+            <router-outlet></router-outlet>
+        </div>
+
+        <!-- TODO: uncomment if necessary -->
+        <!-- <ng-container *ngIf="isFooterDisplayed">
+            <sng-page-footer></sng-page-footer>
+        </ng-container> -->
+    </mat-sidenav-content>
+
+    <mat-sidenav #navSidenav>
+        <div class="sidenav-header">
+            <button mat-icon-button (click)="navSidenav.toggle()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <div class="sidenav-content">
+            <mat-nav-list class="navbar navbar-collapsed">
+                <a class="navbar-item" href="#" mat-list-item routerLink="/search" routerLinkActive="active-route"
+                   (click)="navSidenav.toggle()">Поиск</a>
+                <a class="navbar-item" href="#" mat-list-item routerLink="/dictionary" routerLinkActive="active-route"
+                   (click)="navSidenav.toggle()">Мой словарь</a>
+                <a class="navbar-item" href="#" mat-list-item routerLink="/training-selection"
+                   routerLinkActive="active-route" (click)="navSidenav.toggle()">Тренировки</a>
+                <a class="navbar-item" href="#" (click)="navSidenav.toggle()" mat-list-item
+                   routerLinkActive="active-route">Рейтинг</a>
+            </mat-nav-list>
+        </div>
+    </mat-sidenav>
+</mat-sidenav-container>

@@ -1,0 +1,132 @@
+<div *ngIf="{ song: song$ | async, textLines: textLines$ | async, distinctWords: distinctWords$ | async } as data"
+     class="columns">
+    <ng-container *ngIf="isMobile">
+        <div class="actions-header">
+            <button mat-icon-button [matMenuTriggerFor]="videoMenu">
+                <mat-icon>music_video</mat-icon>
+            </button>
+            <button mat-icon-button [matMenuTriggerFor]="moreInfoMenu">
+                <mat-icon>info</mat-icon>
+            </button>
+        </div>
+        <mat-menu #videoMenu="matMenu" class="video-menu">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/1xICZAQ7GBQ" frameborder="0"></iframe>
+        </mat-menu>
+        <mat-menu #moreInfoMenu="matMenu" class="more-info-menu">
+            <span class="info-item"><span>Всего слов:</span> <span class=" info-value">{{ data.song.wordCount }}</span>
+            </span>
+            <span class="info-item"><span>Уникальных слов:</span> <span class=" info-value">{{ data.song.uniqueWordCount
+                    }}</span>
+            </span>
+        </mat-menu>
+    </ng-container>
+    <!-- TODO: make smaller and hidden on phone -->
+    <div *ngIf="!isMobile" class="song-block">
+        <div class="column column-sticky song-info-block">
+            <div class="video">
+                <iframe width="320" height="180" src="https://www.youtube.com/embed/1xICZAQ7GBQ"
+                        frameborder="0"></iframe>
+            </div>
+            <!-- <div class="title">
+                Подробнее
+            </div>
+            <span class="info-item"><span>Всего слов:</span> <span class=" info-value">{{ wordCount }}</span>
+            </span>
+            <span class="info-item"><span>Уникальных слов:</span> <span class=" info-value">{{ uniqueWordCount }}</span>
+            </span> -->
+        </div>
+    </div>
+    <div class="column lyrics-block">
+        <div class="title">{{ data.song ? data.song?.artist + ' - ' + data.song?.songName : '' }}</div>
+        <mat-tab-group class="words-view-tab-group" animationDuration="0ms" (selectedTabChange)="onTabChange($event)">
+            <mat-tab label="Текст">
+                <div class="content lyrics">
+                    <span *ngFor="let line of data.textLines" class="line">
+                        <!-- TODO: transfer to component -->
+                        <ng-container *ngFor="let item of line.items">
+                            <ng-container *ngIf="!item.isInDictionary; else addedWord">
+                                <span [class.word]=" !item.isPunctuation" [class.selected]="isSelected(item)"
+                                      matTooltip="Слово уже добавлено в словарь"
+                                      [class.added-to-dictionary]="item.isInDictionary"
+                                      (click)="!item.isPunctuation && !isSelected(item) ? onWordAdd(item) : onWordRemove(item)">{{
+                                    item.content
+                                    }}</span>
+                            </ng-container>
+                            <ng-template #addedWord>
+                                <span #tooltip="matTooltip" [class.word]=" !item.isPunctuation"
+                                      matTooltipPosition="above" matTooltip="Слово уже добавлено в словарь"
+                                      class="added-to-dictionary" (click)="tooltip.toggle()">{{
+                                    item.content
+                                    }}</span>
+                            </ng-template>
+                        </ng-container>
+                    </span>
+                </div>
+            </mat-tab>
+            <mat-tab label="Список слов">
+                <div class="content list">
+                    <ng-container *ngFor="let item of data.distinctWords">
+                        <div *ngIf="!item.isInDictionary" class="word" [class.selected]="isSelected(item)"
+                             (click)="!item.isPunctuation && !isSelected(item) ? onWordAdd(item) : onWordRemove(item)">
+                            {{
+                            item?.content }}
+                        </div>
+                    </ng-container>
+                    <span class="word-list-category-divider">Добавленные в словарь слова</span>
+                    <ng-container *ngFor="let item of data.distinctWords">
+                        <div *ngIf="item.isInDictionary" class="word added-to-dictionary">{{item?.content }}
+                        </div>
+                    </ng-container>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <div class="column column-sticky added-words-block">
+        <div class="title">Выбранные слова</div>
+        <div class="block-content">
+            <div *ngIf="addedWords.length; else tip" class="added-words-list">
+                <div *ngFor="let word of addedWords; let i = index" class="card">
+                    <mat-form-field class="translates-form-field" appearance="none">
+                        <mat-chip-list #translateList class="translates">
+                            <span class="foreign">
+                                {{ word?.foreign }}
+                            </span>
+                            <!-- TODO: make chips not selectable -->
+                            <mat-chip *ngFor="let translate of word?.translates" [disableRipple]="true"
+                                      [removable]="true" (removed)="onTranslateRemove(word.foreign, translate)">
+                                {{ translate }}
+                                <button matChipRemove>
+                                    <mat-icon>cancel</mat-icon>
+                                </button>
+                            </mat-chip>
+                            <input *ngIf="!word.isLoading; else wordLoadingSpinner" placeholder="+перевод"
+                                   [matChipInputFor]="translateList"
+                                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
+                                   (matChipInputTokenEnd)="onTranslateAdd($event, word.foreign)">
+                            <ng-template #wordLoadingSpinner>
+                                <mat-spinner class="word-loading-spinner" [diameter]="20"></mat-spinner>
+                            </ng-template>
+                        </mat-chip-list>
+                    </mat-form-field>
+                    <button class="remove-btn" mat-icon-button (click)="onWordRemove(i)" color="primary">
+                        <mat-icon aria-label="Close">close</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <ng-template #tip>
+                <div class="tip">Выберите слова, которые вы не знаете, кликая по ним, и затем нажмите кнопку "Добавить в
+                    словарь" внизу экрана
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
+<div class="actions-footer">
+    <!-- <div class="info">
+        <span class="info-item"><span>Выбрано слов:</span> <span class=" info-value">{{
+                addedWords.length}}</span></span>
+    </div> -->
+    <div class="actions">
+        <button class="button" mat-flat-button color="primary">Добавить выделенные слова</button>
+    </div>
+</div>

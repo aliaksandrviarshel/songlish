@@ -1,0 +1,10 @@
+<sng-table-base [items]="items" [filterValue]="filterValue" confirmDeleteMessage="Удалить слово?" [disableDelete]="true"
+                (expand)="onGetDetails($event)">
+    <ng-template #tile let-model="model">
+        <sng-word-list-tile [model]="model"></sng-word-list-tile>
+    </ng-template>
+    <ng-template #expandedTile let-id="id">
+        <sng-word-expanded-tile [id]="id" [details]="details$ | async" (cancel)="onCancel()" (save)="onSave($event)">
+        </sng-word-expanded-tile>
+    </ng-template>
+</sng-table-base>

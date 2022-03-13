@@ -1,0 +1,99 @@
+@import "@angular/material";
+
+$red: get-color-from-palette($red-palette, 700);
+$yellow: get-color-from-palette($yellow-palette, 700);
+$green: get-color-from-palette($green-palette, 700);
+
+:host {
+    width: min(300px, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    padding: 10px;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+// radio button
+.container {
+    width: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &.low {
+        input:checked ~ .checkmark {
+            background-color: $red;
+        }
+
+        .checkmark {
+            border-color: $red;
+        }
+
+        &:hover input ~ .checkmark {
+            background-color: $red;
+        }
+    }
+
+    &.medium {
+        input:checked ~ .checkmark {
+            background-color: $yellow;
+        }
+
+        .checkmark {
+            border-color: $yellow;
+        }
+
+        &:hover input ~ .checkmark {
+            background-color: $yellow;
+        }
+    }
+
+    &.high {
+        input:checked ~ .checkmark {
+            background-color: $green;
+        }
+
+        .checkmark {
+            border-color: $green;
+        }
+
+        &:hover input ~ .checkmark {
+            background-color: $green;
+        }
+    }
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 45px;
+        width: 45px;
+        border-radius: 3px;
+        border-style: solid;
+
+        border-radius: 50%;
+    }
+}

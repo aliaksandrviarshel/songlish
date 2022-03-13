@@ -1,0 +1,144 @@
+@import "@angular/material";
+
+$background-dark-gray: get-color-from-palette($gray-palette, 50);
+$primary: get-color-from-palette($blue-palette, 700);
+$light-gray: get-color-from-palette($gray-palette, 400);
+
+:host {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-block {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+}
+
+// suggested
+.suggested-block {
+    width: min(700px, 100%);
+    align-self: center;
+
+    .title {
+        padding-left: 20px;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .song-list {
+        .item {
+            border-bottom: 1px solid $light-gray;
+
+            .song-name {
+                font-size: 15px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+// .suggested-block {
+//     width: min(900px, 100%);
+//     align-self: center;
+
+//     .title {
+//         font-weight: 600;
+//         font-size: 18px;
+//     }
+
+//     .song-list {
+//         $card-width: 200px;
+//         $card-height: 170px;
+//         $song-name-font-size: 16px;
+//         $artist-font-size: 14px;
+
+//         padding: 15px 0;
+//         display: flex;
+//         flex-wrap: wrap;
+//         gap: 15px;
+
+//         .card {
+//             transition: 200ms;
+//             width: $card-width;
+//             height: $card-height;
+//             position: relative;
+//             transition: 100ms;
+//             border-radius: 5px;
+//             display: flex;
+//             flex-direction: column;
+//             background-color: $background-dark-gray;
+//             cursor: pointer;
+
+//             .content {
+//                 height: 300px;
+//                 flex: 1;
+//                 display: flex;
+//                 flex-direction: column;
+//                 justify-content: center;
+//                 box-shadow: 0 0 3px $light-gray;
+
+//                 img {
+//                     padding: auto;
+//                     max-width: auto;
+//                     max-height: 125px;
+//                 }
+
+//                 .footer {
+//                     padding-bottom: 10px;
+//                     height: 100%;
+//                     width: 100%;
+//                     align-self: center;
+//                     position: absolute;
+//                     bottom: 0;
+//                     background-color: rgba($background-dark-gray, 0.5);
+//                     background: linear-gradient($background-dark-gray, transparent, $background-dark-gray);
+//                     display: flex;
+//                     flex-direction: column;
+//                     align-items: center;
+//                     justify-content: flex-end;
+//                     // color: #fff;
+
+//                     .song-name {
+//                         transition: 400ms;
+//                         font-size: $song-name-font-size;
+//                         font-weight: 600;
+//                     }
+
+//                     .artist {
+//                         transition: 400ms;
+//                         font-size: $artist-font-size;
+//                     }
+//                 }
+//             }
+
+//             &:hover {
+//                 transition: 400ms;
+
+//                 .content {
+//                     .footer {
+//                         transition: 400ms;
+//                         background: linear-gradient(
+//                             $background-dark-gray,
+//                             rgba($background-dark-gray, 0.6),
+//                             $background-dark-gray
+//                         );
+
+//                         .song-name {
+//                             transition: 400ms;
+//                             transform: translateY(-15px);
+//                             font-size: calc($song-name-font-size + 2px);
+//                         }
+
+//                         .artist {
+//                             transition: 400ms;
+//                             transform: translateY(-15px);
+//                             font-size: calc($artist-font-size + 2px);
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

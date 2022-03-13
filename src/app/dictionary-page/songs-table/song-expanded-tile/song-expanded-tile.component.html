@@ -1,0 +1,32 @@
+<ng-container *ngIf="details; else loading">
+    <div cdkDropListGroup class="lists">
+        <div class="words-block">
+            <span class="foreign">Не выучено:</span>
+            <mat-chip-list id="unlearnedWords" cdkDropListOrientation="horizontal" cdkDropList
+                           class="words-list unlearned-words-list" cdkDropListConnectedTo="learnedWords"
+                           [cdkDropListData]="unlearnedWords" (cdkDropListDropped)="drop($event)">
+                <mat-chip *ngFor="let word of unlearnedWords" cdkDrag class="item unlearned" [cdkDragData]="string"
+                          [cdkDragData]="word">
+                    {{ word.foreign }}
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+        <div class="words-block">
+            <span class="foreign">Изучено:</span>
+            <mat-chip-list id="learnedWords" cdkDropListOrientation="horizontal" cdkDropList
+                           class="words-list learned-words-list" [cdkDropListData]="learnedWords"
+                           cdkDropListConnectedTo="unlearnedWords" (cdkDropListDropped)="drop($event)">
+                <mat-chip *ngFor="let word of learnedWords" cdkDrag class="item learned" [cdkDragData]="word">{{
+                    word.foreign }}
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+    <div class="actions">
+        <button mat-stroked-button color="primary" [disabled]="!isDirty" (click)="onCancel()">Отмена</button>
+        <button mat-flat-button color="primary" [disabled]="!isDirty" (click)="onSave()">Сохранить</button>
+    </div>
+</ng-container>
+<ng-template #loading>
+    <mat-spinner class="progress-spinner" [diameter]="20"></mat-spinner>
+</ng-template>

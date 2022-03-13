@@ -1,0 +1,5 @@
+<ng-container [ngSwitch]="level">
+    <span class="low" *ngSwitchCase="wordKnowledgeLevel.Unlearned">не выучено</span>
+    <span class="middle" *ngSwitchCase="wordKnowledgeLevel.Medium">ну такое</span>
+    <span class="high" *ngSwitchCase="wordKnowledgeLevel.Learned">изучено</span>
+</ng-container>

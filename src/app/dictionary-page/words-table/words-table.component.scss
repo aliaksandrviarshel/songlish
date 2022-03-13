@@ -1,0 +1,43 @@
+:host {
+    ::ng-deep {
+        .mat-header-cell {
+            padding: 0;
+        }
+    }
+}
+
+.words-table {
+    width: 100%;
+
+    .word-cell {
+        .foreign,
+        .translates {
+            font-size: 17px;
+        }
+
+        .foreign {
+            font-weight: bold;
+        }
+    }
+
+    .word-level-cell {
+        font-weight: bold;
+    }
+}
+
+tr.detail-row {
+    height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+    background: whitesmoke;
+}
+
+.element-row td {
+    border-bottom-width: 0;
+}
+
+.element-detail {
+    overflow: hidden;
+    display: flex;
+}

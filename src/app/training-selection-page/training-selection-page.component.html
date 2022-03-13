@@ -1,0 +1,9 @@
+<div class="center-block">
+    <mat-selection-list #trainingModesRef class="training-modes-list" [multiple]="false">
+        <sng-training-mode-tile *ngFor="let mode of trainingModes" [mode]="mode"></sng-training-mode-tile>
+    </mat-selection-list>
+    <button mat-flat-button color="primary" class="start-training-btn"
+            [disabled]="!trainingModesRef.selectedOptions.selected.length" (click)="onStartTraining()">Начать
+        тренировку
+    </button>
+</div>

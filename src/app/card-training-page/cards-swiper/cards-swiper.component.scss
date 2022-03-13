@@ -1,0 +1,82 @@
+@import "~swiper/css";
+@import "~swiper/css/navigation";
+@import "@angular/material";
+
+$on-primary: get-color-from-palette($blue-palette, 700);
+$light-blue: get-color-from-palette($blue-palette, 300);
+$background-light-gray: get-color-from-palette($gray-palette, 100);
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+// card
+.card {
+    user-select: none;
+    width: 300px;
+    height: 300px;
+    background-color: transparent;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .card-content {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+        color: #fff;
+        font-size: 24px;
+        position: relative;
+        width: 100%;
+        height: 200px;
+        transition: transform 0.4s;
+        transform-style: preserve-3d;
+
+        .front,
+        .back {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            background-color: $light-blue;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+        }
+    }
+
+    &.flipped .card-content {
+        transform: rotateY(180deg);
+    }
+}

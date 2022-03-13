@@ -1,0 +1,56 @@
+@import "@angular/material";
+
+$green: get-color-from-palette($green-palette, 100);
+$red: get-color-from-palette($red-palette, 100);
+
+:host {
+    width: 100%;
+    padding: 0 10px;
+}
+
+.words-list {
+    width: 100%;
+
+    ::ng-deep {
+        .mat-chip-list-wrapper {
+            min-height: 40px;
+        }
+    }
+}
+
+.lists {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.unlearned-words-list {
+    .item {
+        &.unlearned {
+            background-color: $red;
+        }
+    }
+}
+
+.learned-words-list {
+    .item {
+        &.learned {
+            background-color: $green;
+        }
+
+        &.unlearned {
+            border-color: $green;
+        }
+    }
+}
+
+// actions
+.actions {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+.progress-spinner {
+    margin: 10px;
+}

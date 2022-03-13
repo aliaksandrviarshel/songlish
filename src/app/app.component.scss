@@ -1,0 +1,100 @@
+@import "@angular/material";
+@import "../mixins.scss";
+
+$on-primary: get-color-from-palette($blue-palette, 700);
+$primary: #fff;
+$light-gray: get-color-from-palette($gray-palette, 400);
+
+$header-height: 75px;
+
+mat-sidenav-container {
+    height: 100%;
+}
+
+// page content
+mat-sidenav-content.page-shell-content {
+    overflow-y: overlay;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.page-content {
+    display: flex;
+    flex: 1;
+
+    ::ng-deep {
+        sng-card-training-page {
+            width: 100%;
+        }
+    }
+}
+
+// header
+.page-header {
+    display: flex;
+    gap: 10px;
+    min-height: $header-height;
+    background-color: $primary;
+    padding: 0 15px;
+
+    @include bottom-shadow;
+
+    @include for-tablet {
+        padding: 0 6px;
+        box-shadow: none;
+    }
+}
+
+.logo {
+    color: $on-primary;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+mat-sidenav {
+    background-color: $primary;
+}
+
+.navbar-full-sized {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    padding: 0 50px;
+
+    .navbar-item {
+        transition: 200ms;
+        height: 100%;
+        color: $on-primary;
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 15px;
+
+        &.active-route,
+        &:hover {
+            transition: 100ms;
+            border-bottom: 5px solid $on-primary;
+        }
+    }
+}
+
+// sidenav
+mat-sidenav {
+    .sidenav-header {
+        height: 56px;
+        display: flex;
+        align-items: center;
+        padding-left: 16px;
+
+        button {
+            mat-icon {
+                color: $on-primary;
+            }
+        }
+    }
+
+    width: 80%;
+}

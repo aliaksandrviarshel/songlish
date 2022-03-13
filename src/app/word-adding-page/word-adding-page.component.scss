@@ -1,0 +1,337 @@
+@import "@angular/material";
+@import "../../mixins.scss";
+
+$primary: get-color-from-palette($blue-palette, 700);
+$on-primary: #fff;
+$light-gray: get-color-from-palette($gray-palette, 400);
+$light-blue: get-color-from-palette($blue-palette, 300);
+$background-light-blue: get-color-from-palette($blue-palette, 100);
+
+:host {
+    flex: 1;
+
+    @include for-phone {
+        padding-top: 0;
+    }
+}
+
+.columns {
+    display: flex;
+    gap: 10px;
+
+    @include for-tablet {
+        flex-direction: column;
+    }
+
+    @include for-phone {
+        .actions-header {
+            background-color: #fff;
+            position: sticky;
+            z-index: 1000;
+            top: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            height: 75px;
+            padding: 0 15px;
+
+            button {
+                @include size(32px);
+            }
+
+            @include icon-size(32px);
+            @include bottom-shadow;
+        }
+    }
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+
+.column {
+    padding-top: 10px;
+}
+
+.column-sticky {
+    height: 80vh;
+    position: sticky;
+    padding-top: 15px;
+    // top: 25px;
+    top: 0px;
+
+    @include for-tablet {
+        height: initial;
+    }
+}
+
+// left column
+.song-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: 1 1 400px;
+
+    @include for-tablet {
+        align-items: center;
+        flex: 0;
+    }
+
+    .song-info-block {
+        // flex: 1;
+        // position: sticky;
+
+        .video {
+            height: 225px;
+            padding-left: 20px;
+
+            iframe {
+                // position: absolute;
+                // right: 0;
+            }
+        }
+
+        .title {
+            align-items: flex-end;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: flex-end;
+            gap: 5px;
+
+            .info-value {
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+// centered column
+.lyrics-block {
+    flex: 1 1 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 15px;
+
+    @include for-tablet {
+        padding-top: 15px;
+    }
+
+    .words-view-tab-group {
+        width: 100%;
+    }
+
+    .tools {
+        background-color: #fff;
+        position: sticky;
+        top: 0;
+        flex-shrink: 0;
+        align-self: stretch;
+        height: 75px;
+    }
+
+    .title {
+        font-size: 22px;
+        min-height: 2em;
+    }
+
+    .content {
+        padding: 5px 0;
+        user-select: none;
+        font-size: 20px;
+        padding: 15px 25px;
+
+        .word {
+            &:not(.added-to-dictionary):hover {
+                background-color: $background-light-blue;
+                color: $on-primary;
+                cursor: pointer;
+            }
+
+            &.selected {
+                background-color: $light-blue;
+                color: #fff;
+            }
+
+            &.added-to-dictionary {
+                color: $light-gray;
+            }
+        }
+
+        &.lyrics {
+            .line {
+                display: block;
+            }
+        }
+
+        &.list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            .word {
+                padding: 10px;
+            }
+
+            .word-list-category-divider {
+                text-align: center;
+                color: $light-gray;
+                border-bottom: 2px solid $background-light-blue;
+            }
+        }
+    }
+}
+
+// right column
+.added-words-block {
+    flex: 1 1 400px;
+    align-items: center;
+
+    @include for-tablet {
+        padding-bottom: 15px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .block-content {
+        .tip {
+            display: flex;
+            justify-content: center;
+            opacity: 0.7;
+            max-width: 300px;
+            user-select: none;
+            cursor: default;
+
+            animation: blinker 3s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0.1;
+            }
+        }
+
+        .added-words-list {
+            padding: 0 5px;
+            overflow: auto;
+            height: 70vh;
+            width: 300px;
+
+            // added-word-card
+            .card {
+                position: relative;
+                padding: 5px;
+                margin: 2px;
+                background-color: #fff;
+                border-radius: 5px;
+                max-width: 300px;
+                min-height: 75px;
+                @include even-shadow;
+
+                .foreign {
+                    padding-left: 10px;
+                    font-weight: 600;
+                    font-size: 18px;
+                }
+
+                mat-form-field.translates-form-field {
+                    ::ng-deep {
+                        .translates {
+                            .mat-chip-list-wrapper {
+                                padding-right: 30px;
+                            }
+                        }
+
+                        .word-loading-spinner {
+                            margin-left: 15px;
+                        }
+
+                        .mat-form-field-wrapper {
+                            padding-bottom: 0;
+
+                            .mat-form-field-infix {
+                                border-top: 0;
+                            }
+                        }
+                    }
+
+                    width: 100%;
+                }
+
+                .remove-btn {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    color: get-color-from-palette($red-palette, 200);
+
+                    :hover {
+                        color: get-color-from-palette($red-palette, 400);
+                    }
+
+                    ::ng-deep {
+                        background-color: transparent;
+                    }
+
+                    @include size(30px);
+                    @include icon-size(30px);
+                }
+            }
+        }
+    }
+}
+
+// footer
+.actions-footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: 75px;
+    z-index: 1000;
+    background-color: $on-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include top-shadow;
+
+    .info {
+        .info-item {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            color: $primary;
+            display: flex;
+            justify-content: flex-end;
+            gap: 5px;
+
+            .info-value {
+                font-weight: 600;
+            }
+        }
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .button {
+            font-size: 18px;
+
+            &::after {
+                flex-grow: 2;
+            }
+        }
+    }
+}
