@@ -8,6 +8,7 @@ import { WordAddingPageComponent } from './word-adding-page/word-adding-page.com
 import { WordAddingPageResolver } from './word-adding-page/resolvers/word-adding-page.resolver';
 import { DictionaryPageResolver } from './dictionary-page/resolvers/dictionary-page.resolver';
 import { TrainingSelectionPageComponent } from './training-selection-page/training-selection-page.component';
+import { WordTranslateTrainingPageComponent } from './word-translate-training-page/word-translate-training-page.component';
 
 const routes: Routes = [
     {
@@ -27,6 +28,10 @@ const routes: Routes = [
     {
         path: 'card-training',
         component: CardTrainingPageComponent,
+    },
+    {
+        path: 'word-translate-training',
+        component: WordTranslateTrainingPageComponent,
     },
     {
         path: 'dictionary',

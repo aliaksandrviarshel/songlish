@@ -45,6 +45,7 @@ import { CardTrainingPageModule } from './card-training-page/card-training-page.
 import { SearchPageModule } from './search-page/search-page.module';
 import { TrainingSelectionPageModule } from './training-selection-page/training-selection-page.module';
 import { WordAddingPageModule } from './word-adding-page/word-adding-page.module';
+import { WordTranslateTrainingPageModule } from './word-translate-training-page/word-translate-training-page.module';
 
 @NgModule({
     declarations: [
@@ -57,6 +58,7 @@ import { WordAddingPageModule } from './word-adding-page/word-adding-page.module
         SearchPageModule,
         TrainingSelectionPageModule,
         WordAddingPageModule,
+        WordTranslateTrainingPageModule,
         //
         NgxsModule.forRoot(),
         NgxsRouterPluginModule.forRoot(),
