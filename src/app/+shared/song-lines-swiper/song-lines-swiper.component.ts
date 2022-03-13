@@ -1,6 +1,6 @@
 import SwiperCore, { Navigation, Swiper } from "swiper";
 import { Component, OnInit, Input, ViewEncapsulation } from "@angular/core";
-import { SongLinesModel } from "../../card-training-page/models/song-lines.model";
+import { SongLinesModel } from "./interfaces/song-lines.model";
 
 SwiperCore.use([Navigation]);
 
