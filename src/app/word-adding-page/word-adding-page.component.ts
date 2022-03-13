@@ -4,7 +4,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { ObserverComponent } from '../+core/abstract/observer-component';
+import { ObserverComponent } from '../+shared/abstract/observer-component';
 import { Song } from './models/song.model';
 import { TextItem } from './models/text-item.model';
 import { TextLine } from './models/text-line.model';

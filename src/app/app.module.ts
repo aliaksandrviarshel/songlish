@@ -48,7 +48,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SwiperModule } from "swiper/angular";
 import { CardsSwiperComponent } from './card-training-page/cards-swiper/cards-swiper.component';
 import { CardTrainingState } from './card-training-page/state/card-training.state';
-import { HighlightPipe } from './+core/pipes/highlight.pipe';
+import { HighlightPipe } from './+shared/pipes/highlight.pipe';
 import { SongLinesSwiperComponent } from './card-training-page/song-lines-swiper/song-lines-swiper.component';
 import { TrainingSelectionPageComponent } from './training-selection-page/training-selection-page.component';
 import { TrainingModeTileComponent } from './training-selection-page/training-mode-tile/training-mode-tile.component';
