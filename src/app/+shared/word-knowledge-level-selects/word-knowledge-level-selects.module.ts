@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { WordKnowledgeLevelSelectsComponent } from './word-knowledge-level-selects.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -29,28 +30,16 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { SwiperModule } from 'swiper/angular';
-import { AppRoutingModule } from '../app-routing.module';
-import { CardTrainingPageComponent } from './card-training-page.component';
-import { CardsSwiperComponent } from './cards-swiper/cards-swiper.component';
-import { NgxsModule } from '@ngxs/store';
-import { CardTrainingState } from './state/card-training.state';
-import { SongLinesSwiperModule } from '../+shared/song-lines-swiper/song-lines-swiper.module';
-import { WordKnowledgeLevelSelectsModule } from '../+shared/word-knowledge-level-selects/word-knowledge-level-selects.module';
 
 @NgModule({
     declarations: [
-        CardTrainingPageComponent,
-        CardsSwiperComponent,
+        WordKnowledgeLevelSelectsComponent
     ],
     imports: [
-        SongLinesSwiperModule,
-        WordKnowledgeLevelSelectsModule,
-        //
-        NgxsModule.forFeature([CardTrainingState]),
         CommonModule,
         BrowserModule,
-        CommonModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MatToolbarModule,
@@ -82,6 +71,9 @@ import { WordKnowledgeLevelSelectsModule } from '../+shared/word-knowledge-level
         DragDropModule,
         MatMenuModule,
         SwiperModule,
+    ],
+    exports: [
+        WordKnowledgeLevelSelectsComponent
     ]
 })
-export class CardTrainingPageModule { }
+export class WordKnowledgeLevelSelectsModule { }

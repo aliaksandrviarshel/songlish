@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ObserverComponent } from 'src/app/+shared/abstract/observer-component';
-import { WordKnowledgeLevel } from '../enums/word-knowledge-level';
+import { WordKnowledgeLevel } from './enums/word-knowledge-level';
 
 @Component({
     selector: 'sng-word-knowledge-level-selects',
