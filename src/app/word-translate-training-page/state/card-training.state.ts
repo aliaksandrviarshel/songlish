@@ -69,10 +69,6 @@ export class CardTrainingState {
     onSetSongLines({ getState, patchState }: StateContext<CardTrainingStateModel>, { cardIndex }: SetSongLines) {
         const { cardDatas } = getState();
 
-        if (!cardDatas) {
-            return;
-        }
-
         patchState({
             songLinesModels: cardDatas[cardIndex].songLinesModels,
             currentWord: cardDatas[cardIndex].card

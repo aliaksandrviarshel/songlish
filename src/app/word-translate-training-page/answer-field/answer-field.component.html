@@ -1,0 +1,4 @@
+<p class="word">{{ words[currentIndex].foreign }}</p>
+<mat-form-field appearance="outline" class="search-field" color="primary" autocomplete="off">
+    <input #input matInput spellcheck="false" [formControl]="control" (input)="onInput($event.target.value)">
+</mat-form-field>

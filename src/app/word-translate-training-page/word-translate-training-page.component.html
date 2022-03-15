@@ -1,1 +1,11 @@
-<p>word-translate-training-page works!</p>
+<a mat-stroked-button color="primary" href="#" routerLink="bruh" class="end-training-link">Закончить тренировку</a>
+<div class="center-block">
+    <sng-song-lines-swiper class="song-lines-swiper" [linesModels]="songLinesModels$ | async"
+                           [word]="(currentWord$ | async)?.foreign">
+    </sng-song-lines-swiper>
+    <sng-answer-field class="answer-field" [words]="cards$ | async" (indexChanged)="onCardIndexChanged($event)">
+    </sng-answer-field>
+    <sng-word-knowledge-level-selects class="word-knowledge-level" [level]="(currentWord$ | async)?.knowledgeLevel"
+                                      (levelChanged)="onLevelChanged($event)">
+    </sng-word-knowledge-level-selects>
+</div>

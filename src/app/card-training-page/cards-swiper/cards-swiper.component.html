@@ -3,7 +3,9 @@
         <div #card class="card front carousel-cell" [class.flipped]="cardIsFlipped" (click)="onCardFlip()">
             <div class="card-content">
                 <div class="front">{{word.foreign}}</div>
-                <div class="back">{{word.translate}}</div>
+                <div class="back">
+                    <span *ngFor="let translate of word.translates">{{translate}}</span>
+                </div>
             </div>
         </div>
     </ng-template>
