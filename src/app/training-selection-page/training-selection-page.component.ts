@@ -36,6 +36,9 @@ export class TrainingSelectionPageComponent implements OnInit {
             case TrainingModes.Cards:
                 this.store.dispatch(new Navigate(['/card-training']))
                 break;
+            case TrainingModes.FillDashes:
+                this.store.dispatch(new Navigate(['/fill-gaps-training']))
+                break;
             case TrainingModes.WordTranslate:
                 this.store.dispatch(new Navigate(['/word-translate-training']))
                 break;

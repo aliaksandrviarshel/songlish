@@ -9,6 +9,7 @@ import { WordAddingPageResolver } from './word-adding-page/resolvers/word-adding
 import { DictionaryPageResolver } from './dictionary-page/resolvers/dictionary-page.resolver';
 import { TrainingSelectionPageComponent } from './training-selection-page/training-selection-page.component';
 import { WordTranslateTrainingPageComponent } from './word-translate-training-page/word-translate-training-page.component';
+import { FillGapsTrainingPageComponent } from './fill-gaps-page/fill-gaps-training-page.component';
 
 const routes: Routes = [
     {
@@ -28,6 +29,10 @@ const routes: Routes = [
     {
         path: 'card-training',
         component: CardTrainingPageComponent,
+    },
+    {
+        path: 'fill-gaps-training',
+        component: FillGapsTrainingPageComponent,
     },
     {
         path: 'word-translate-training',
