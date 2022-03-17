@@ -1,3 +1,7 @@
+@import "@angular/material";
+
+$light-gray: get-color-from-palette($gray-palette, 400);
+
 @mixin for-tablet {
     @media (max-width: 960px) {
         @content;

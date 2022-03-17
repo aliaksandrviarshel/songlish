@@ -1,7 +1,8 @@
 import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatAutocomplete, MatAutocompleteActivatedEvent } from '@angular/material/autocomplete';
+import { MatAutocomplete, MatAutocompleteActivatedEvent, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Observable, map, debounceTime, distinctUntilChanged, mergeMap, tap, of } from 'rxjs';
+import { SongSearchResultModel } from '../models/song-search-result.model';
 import { SongApiService } from '../services/song-api.service';
 
 @Component({
@@ -30,23 +31,23 @@ export class SearchFieldComponent {
                 this.toHighlight = x;
             }),
             mergeMap(x => {
+                console.error(x)
                 if (!x) {
                     return of([]);
                 }
 
                 return this.songApiService.search(x);
-            }),
-            map(value => {
-                return value.map(x => x.content);
             })
         );
     }
 
     onOptionActivated($event: MatAutocompleteActivatedEvent): void {
-        this.myControl.setValue($event.option?.value, { emitEvent: false });
+        const value = $event.option?.value;
+        this.myControl.setValue(`${value.artist} ${value.name}`, { emitEvent: false });
     }
 
-    onSubmit(songName: string): void {
-        this.submit.emit(songName);
+    onOptionSelected($event: MatAutocompleteSelectedEvent): void {
+        const value = $event.option?.value;
+        this.submit.emit(value.id);
     }
 }

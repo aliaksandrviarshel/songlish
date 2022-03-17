@@ -3,7 +3,7 @@
 // Color
 // Text
 // Other
-@use "@angular/material" as mat;
+@import "@angular/material";
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 @import "../node_modules/@angular/material/theming";
@@ -28,9 +28,9 @@ $app-input: mat-light-theme($app-input-primary, $app-input-accent);
 @include mat-form-field-theme($app-theme);
 @include mat-input-theme($app-theme);
 
-@include mat.core();
+@include core();
 
-$on-primary: mat.get-color-from-palette(mat.$blue-palette, 700);
+$on-primary: get-color-from-palette($blue-palette, 700);
 
 * {
     box-sizing: border-box;
@@ -67,10 +67,20 @@ a {
     }
 }
 
-.mat-option-text {
-    font-weight: bold;
+.options {
+    .mat-option-text {
+        font-weight: bold;
 
-    .highlight {
-        font-weight: normal;
+        .highlight {
+            font-weight: normal;
+        }
+
+        .artist {
+            color: $on-primary;
+
+            &::after {
+                content: " ";
+            }
+        }
     }
 }

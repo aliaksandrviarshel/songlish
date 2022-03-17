@@ -1,8 +1,9 @@
-export class SongSearchResult {
+export class SongSearchResultModel {
     id: string;
-    content: string;
+    artist: string;
+    name: string;
 
-    constructor(init?: Partial<SongSearchResult>) {
+    constructor(init?: Partial<SongSearchResultModel>) {
         Object.assign(this, init);
     }
 }

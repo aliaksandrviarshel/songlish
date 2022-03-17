@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { SongListItemModel } from '../models/song-list-item.model';
-import { SongSearchResult } from '../models/song-search-result.model';
+import { SongSearchResultModel } from '../models/song-search-result.model';
 
 @Injectable({
     providedIn: 'root'
@@ -13,16 +13,16 @@ export class SongApiService {
         return of(this.popularSongs);
     }
 
-    search(query: string): Observable<SongSearchResult[]> {
+    search(query: string): Observable<SongSearchResultModel[]> {
         return of(this.searchResults);
     }
 
-    private searchResults: SongSearchResult[] = [
-        { id: '1', content: 'Lil Vodu V Referat - Duh' },
-        { id: '2', content: 'Mislant Gigisly - Hit' },
-        { id: '3', content: 'Gregory - Old Town Road' },
-        { id: '4', content: 'Dowakin - Sladky Rulet' },
-        { id: '5', content: 'Vlados - Phonk' },
+    private searchResults: SongSearchResultModel[] = [
+        { id: '1', artist: 'Lil Vodu V Referat', name: 'Duh' },
+        { id: '2', artist: 'Mislant Gigisly', name: 'Hit' },
+        { id: '3', artist: 'Gregory', name: 'Old Town Road' },
+        { id: '4', artist: 'Dowakin', name: 'Sladky Rulet' },
+        { id: '5', artist: 'Vlados', name: 'Phonk' },
     ];
 
     private popularSongs: SongListItemModel[] = [
