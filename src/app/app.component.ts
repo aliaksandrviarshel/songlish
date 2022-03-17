@@ -16,7 +16,8 @@ export class AppComponent {
 
     private readonly routesWithoutHeader: string[] = [
         '/card-training',
-        '/word-translate-training'
+        '/word-translate-training',
+        '/fill-gaps-training'
     ];
 
     // get isFooterDisplayed() {
