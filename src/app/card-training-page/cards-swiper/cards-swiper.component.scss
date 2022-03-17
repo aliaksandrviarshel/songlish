@@ -4,6 +4,7 @@
 
 $on-primary: get-color-from-palette($blue-palette, 700);
 $light-blue: get-color-from-palette($blue-palette, 300);
+$very-light-blue: get-color-from-palette($blue-palette, 100);
 $background-light-gray: get-color-from-palette($gray-palette, 100);
 
 .swiper {
@@ -42,14 +43,13 @@ $background-light-gray: get-color-from-palette($gray-palette, 100);
     width: 300px;
     height: 300px;
     background-color: transparent;
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     .card-content {
         box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-        color: #fff;
+        border-radius: 25px;
         font-size: 24px;
         position: relative;
         width: 100%;
@@ -68,7 +68,9 @@ $background-light-gray: get-color-from-palette($gray-palette, 100);
             height: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            background-color: $light-blue;
+            border: 2px dashed $very-light-blue;
+            border-radius: 25px;
+            background-color: #fff;
         }
 
         .back {
