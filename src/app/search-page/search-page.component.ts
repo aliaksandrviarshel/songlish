@@ -17,7 +17,7 @@ export class SearchPageComponent implements OnInit {
 
     ngOnInit(): void { }
 
-    onProcessSearchRequest(query: string) {
-        this.router.navigate(['word-adding', 2]);
+    onProcessSearchRequest($event: string) {
+        this.router.navigate(['word-adding', $event]);
     }
 }

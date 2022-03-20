@@ -31,7 +31,6 @@ export class SearchFieldComponent {
                 this.toHighlight = x;
             }),
             mergeMap(x => {
-                console.error(x)
                 if (!x) {
                     return of([]);
                 }
