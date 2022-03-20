@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { SongListItemModel } from '../models/song-list-item.model';
@@ -7,14 +8,14 @@ import { SongSearchResultModel } from '../models/song-search-result.model';
     providedIn: 'root'
 })
 export class SongApiService {
-    constructor() { }
+    constructor(private http: HttpClient) { }
 
     getPopular(): Observable<SongListItemModel[]> {
         return of(this.popularSongs);
     }
 
     search(query: string): Observable<SongSearchResultModel[]> {
-        return of(this.searchResults);
+        return this.http.get<SongSearchResultModel[]>(`bruh/${query}`);
     }
 
     private searchResults: SongSearchResultModel[] = [

@@ -47,6 +47,7 @@ import { TrainingSelectionPageModule } from './training-selection-page/training-
 import { WordAddingPageModule } from './word-adding-page/word-adding-page.module';
 import { WordTranslateTrainingPageModule } from './word-translate-training-page/word-translate-training-page.module';
 import { FillGapsTrainingPageComponent } from './fill-gaps-page/fill-gaps-training-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -67,6 +68,7 @@ import { FillGapsTrainingPageComponent } from './fill-gaps-page/fill-gaps-traini
         NgxsLoggerPluginModule.forRoot(),
         MatCarouselModule.forRoot(),
         BrowserModule,
+        HttpClientModule,
         CommonModule,
         AppRoutingModule,
         BrowserAnimationsModule,
